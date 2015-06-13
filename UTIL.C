@@ -62,10 +62,7 @@ void printToken( TokenType token, const char* tokenString )
   }
 }
 
-/* Function newStmtNode creates a new statement
- * node for syntax tree construction
- */
-
+/* 创造语法树的新节点*/
 TreeNode * newNode(NodeKind kind){
   TreeNode * t = (TreeNode *) malloc(sizeof(TreeNode));
   int i;
@@ -87,9 +84,7 @@ TreeNode * newNode(NodeKind kind){
   return t;
 } 
 
-/* Function copyString allocates and makes a new
- * copy of an existing string
- */
+/* 给String分配空间并拷贝当前的tokenString */
 char * copyString(char * s)
 {
   int n;
@@ -112,16 +107,14 @@ static int indentno = 0;
 #define INDENT indentno+=2
 #define UNINDENT indentno-=2
 
-/* printSpaces indents by printing spaces */
+/* 通过打印空格进行缩进 */
 static void printSpaces(void)
 { int i;
   for (i=0;i<indentno;i++)
     fprintf(listing," ");
 }
 
-/* procedure printTree prints a syntax tree to the 
- * listing file using indentation to indicate subtrees
- */
+/* printTree打印语法树，使用缩进来表示子树 */
 void printTree( TreeNode * tree )
 { int i;
   INDENT;
@@ -147,7 +140,7 @@ void printTree( TreeNode * tree )
         fprintf(listing,"Var-Declaration\n");
         break;
       case VarArryDeclK:
-        fprintf(listing,"Var-Arry-Declaration\n");
+        fprintf(listing,"Array-Declaration\n");
         break;
       case FunDeclK:
         fprintf(listing,"Fun-Declaration\n");

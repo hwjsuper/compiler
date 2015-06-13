@@ -1,0 +1,469 @@
+
+C- COMPILATION: SORT.C
+   1: /* A program to perform selection sort on a 10
+   2: element array. */
+   3: int x[10];
+	3: reserved word: int
+	3: ID, name= x
+	3: [
+	3: NUM, val= 10
+	3: ]
+	3: ;
+   4: int minloc ( int a[], int low, int high )
+	4: reserved word: int
+	4: ID, name= minloc
+	4: (
+	4: reserved word: int
+	4: ID, name= a
+	4: [
+	4: ]
+	4: ,
+	4: reserved word: int
+	4: ID, name= low
+	4: ,
+	4: reserved word: int
+	4: ID, name= high
+	4: )
+   5: {  int i; int x; int k;
+	5: {
+	5: reserved word: int
+	5: ID, name= i
+	5: ;
+	5: reserved word: int
+	5: ID, name= x
+	5: ;
+	5: reserved word: int
+	5: ID, name= k
+	5: ;
+   6: k = low;
+	6: ID, name= k
+	6: =
+	6: ID, name= low
+	6: ;
+   7: x = a[low];
+	7: ID, name= x
+	7: =
+	7: ID, name= a
+	7: [
+	7: ID, name= low
+	7: ]
+	7: ;
+   8: i = low + 1;
+	8: ID, name= i
+	8: =
+	8: ID, name= low
+	8: +
+	8: NUM, val= 1
+	8: ;
+   9: while (i < high)
+	9: reserved word: while
+	9: (
+	9: ID, name= i
+	9: <
+	9: ID, name= high
+	9: )
+  10: { if (a[i] < x)
+	10: {
+	10: reserved word: if
+	10: (
+	10: ID, name= a
+	10: [
+	10: ID, name= i
+	10: ]
+	10: <
+	10: ID, name= x
+	10: )
+  11: { x = a[i];
+	11: {
+	11: ID, name= x
+	11: =
+	11: ID, name= a
+	11: [
+	11: ID, name= i
+	11: ]
+	11: ;
+  12: k = i; }
+	12: ID, name= k
+	12: =
+	12: ID, name= i
+	12: ;
+	12: }
+  13: i = i + 1;
+	13: ID, name= i
+	13: =
+	13: ID, name= i
+	13: +
+	13: NUM, val= 1
+	13: ;
+  14: }
+	14: }
+  15: return k;
+	15: reserved word: return
+	15: ID, name= k
+	15: ;
+  16: }
+	16: }
+  17: void sort ( int a[], int low, int high )
+	17: reserved word: void
+	17: ID, name= sort
+	17: (
+	17: reserved word: int
+	17: ID, name= a
+	17: [
+	17: ]
+	17: ,
+	17: reserved word: int
+	17: ID, name= low
+	17: ,
+	17: reserved word: int
+	17: ID, name= high
+	17: )
+  18: {  int i; int k;
+	18: {
+	18: reserved word: int
+	18: ID, name= i
+	18: ;
+	18: reserved word: int
+	18: ID, name= k
+	18: ;
+  19: i = low;
+	19: ID, name= i
+	19: =
+	19: ID, name= low
+	19: ;
+  20: while (i < high-1)
+	20: reserved word: while
+	20: (
+	20: ID, name= i
+	20: <
+	20: ID, name= high
+	20: -
+	20: NUM, val= 1
+	20: )
+  21: { int t;
+	21: {
+	21: reserved word: int
+	21: ID, name= t
+	21: ;
+  22: k = minloc (a,i,high);
+	22: ID, name= k
+	22: =
+	22: ID, name= minloc
+	22: (
+	22: ID, name= a
+	22: ,
+	22: ID, name= i
+	22: ,
+	22: ID, name= high
+	22: )
+	22: ;
+  23: t =a[k];
+	23: ID, name= t
+	23: =
+	23: ID, name= a
+	23: [
+	23: ID, name= k
+	23: ]
+	23: ;
+  24: a[k] = a[i];
+	24: ID, name= a
+	24: [
+	24: ID, name= k
+	24: ]
+	24: =
+	24: ID, name= a
+	24: [
+	24: ID, name= i
+	24: ]
+	24: ;
+  25: a[i] = t;
+	25: ID, name= a
+	25: [
+	25: ID, name= i
+	25: ]
+	25: =
+	25: ID, name= t
+	25: ;
+  26: i = i + 1;
+	26: ID, name= i
+	26: =
+	26: ID, name= i
+	26: +
+	26: NUM, val= 1
+	26: ;
+  27: }
+	27: }
+  28: }
+	28: }
+  29: void main (void)
+	29: reserved word: void
+	29: ID, name= main
+	29: (
+	29: reserved word: void
+	29: )
+  30: {  int i;
+	30: {
+	30: reserved word: int
+	30: ID, name= i
+	30: ;
+  31: i = 0;
+	31: ID, name= i
+	31: =
+	31: NUM, val= 0
+	31: ;
+  32: while (i < 10)
+	32: reserved word: while
+	32: (
+	32: ID, name= i
+	32: <
+	32: NUM, val= 10
+	32: )
+  33: { x[i] = input;
+	33: {
+	33: ID, name= x
+	33: [
+	33: ID, name= i
+	33: ]
+	33: =
+	33: ID, name= input
+	33: ;
+  34: i = i + 1;
+	34: ID, name= i
+	34: =
+	34: ID, name= i
+	34: +
+	34: NUM, val= 1
+	34: ;
+  35: }
+	35: }
+  36: sort (x,0,10);
+	36: ID, name= sort
+	36: (
+	36: ID, name= x
+	36: ,
+	36: NUM, val= 0
+	36: ,
+	36: NUM, val= 10
+	36: )
+	36: ;
+  37: i = 0;
+	37: ID, name= i
+	37: =
+	37: NUM, val= 0
+	37: ;
+  38: while (i < 10)
+	38: reserved word: while
+	38: (
+	38: ID, name= i
+	38: <
+	38: NUM, val= 10
+	38: )
+  39: { output(x[i]);
+	39: {
+	39: ID, name= output
+	39: (
+	39: ID, name= x
+	39: [
+	39: ID, name= i
+	39: ]
+	39: )
+	39: ;
+  40: i = i + 1;
+	40: ID, name= i
+	40: =
+	40: ID, name= i
+	40: +
+	40: NUM, val= 1
+	40: ;
+  41: }
+	41: }
+  42: }
+	42: }
+	43: EOF
+
+Syntax tree:
+  Array-Declaration
+    Int
+    Array
+      Id: x
+      Const: 10
+  Fun-Declaration
+    Int
+    Id: minloc
+    Params
+      Param
+        Int
+        Array
+          Id: a
+      Param
+        Int
+        Id: low
+      Param
+        Int
+        Id: high
+    CompStmt
+      Var-Declaration
+        Int
+        Id: i
+      Var-Declaration
+        Int
+        Id: x
+      Var-Declaration
+        Int
+        Id: k
+      Assign
+        Id: k
+        Id: low
+      Assign
+        Id: x
+        Array
+          Id: a
+          Id: low
+      Assign
+        Id: i
+        Op: +
+          Id: low
+          Const: 1
+      while
+        Op: <
+          Id: i
+          Id: high
+        CompStmt
+          if
+            Op: <
+              Array
+                Id: a
+                Id: i
+              Id: x
+            CompStmt
+              Assign
+                Id: x
+                Array
+                  Id: a
+                  Id: i
+              Assign
+                Id: k
+                Id: i
+          Assign
+            Id: i
+            Op: +
+              Id: i
+              Const: 1
+      return
+        Id: k
+  Fun-Declaration
+    Void
+    Id: sort
+    Params
+      Param
+        Int
+        Array
+          Id: a
+      Param
+        Int
+        Id: low
+      Param
+        Int
+        Id: high
+    CompStmt
+      Var-Declaration
+        Int
+        Id: i
+      Var-Declaration
+        Int
+        Id: k
+      Assign
+        Id: i
+        Id: low
+      while
+        Op: <
+          Id: i
+          Op: -
+            Id: high
+            Const: 1
+        CompStmt
+          Var-Declaration
+            Int
+            Id: t
+          Assign
+            Id: k
+            Call
+              Id: minloc
+              Args
+                Id: a
+                Id: i
+                Id: high
+          Assign
+            Id: t
+            Array
+              Id: a
+              Id: k
+          Assign
+            Array
+              Id: a
+              Id: k
+            Array
+              Id: a
+              Id: i
+          Assign
+            Array
+              Id: a
+              Id: i
+            Id: t
+          Assign
+            Id: i
+            Op: +
+              Id: i
+              Const: 1
+  Fun-Declaration
+    Void
+    Id: main
+    Params
+      Void
+    CompStmt
+      Var-Declaration
+        Int
+        Id: i
+      Assign
+        Id: i
+        Const: 0
+      while
+        Op: <
+          Id: i
+          Const: 10
+        CompStmt
+          Assign
+            Array
+              Id: x
+              Id: i
+            Id: input
+          Assign
+            Id: i
+            Op: +
+              Id: i
+              Const: 1
+      Call
+        Id: sort
+        Args
+          Id: x
+          Const: 0
+          Const: 10
+      Assign
+        Id: i
+        Const: 0
+      while
+        Op: <
+          Id: i
+          Const: 10
+        CompStmt
+          Call
+            Id: output
+            Args
+              Array
+                Id: x
+                Id: i
+          Assign
+            Id: i
+            Op: +
+              Id: i
+              Const: 1

@@ -1,19 +1,11 @@
-/****************************************************/
-/* File: parse.c                                    */
-/* The parser implementation for the C- compiler  */
-/* Compiler Construction: Principles and Practice   */
-/* Kenneth C. Louden                                */
-/****************************************************/
-
 #include "globals.h"
 #include "util.h"
 #include "scan.h"
 #include "parse.h"
 
-static TokenType token; /* holds current token */
+static TokenType token; /* 保存当前记号 */
 
-/* function prototypes for recursive calls */
-
+/*进行递归调用的函数*/
 static TreeNode * declaration_list(void);
 static TreeNode * declaration(void);
 static TreeNode * params(void);
@@ -53,6 +45,7 @@ static void match(TokenType expected)
   }
 }
 
+/*declaration_list(void)函数使用递归向下分析方法直接调用declaration()函数，并返回树节点*/ 
 TreeNode * declaration_list(void)
 { 
   TreeNode * t = declaration();
@@ -80,6 +73,9 @@ TreeNode * declaration_list(void)
   return t;
 }
 
+/*declaration(void)函数并不是直接调用var-declaration或fun-declaration文法所对应的函数，令其返回节点
+而是在declaration(void)函数中，通过判断是"ID("、"ID["、还是"ID;"的方式先确定是变量定义还是函数定义，
+然后分别根据判断的结果生成变量声明节点或函数声明节点*/ 
 TreeNode * declaration(void)
 { TreeNode * t = NULL;
 	TreeNode * p = NULL;
@@ -659,12 +655,8 @@ TreeNode * args(void)
 	return t;
 }
 
-
-/****************************************/
-/* the primary function of the parser   */
-/****************************************/
-/* Function parse returns the newly 
- * constructed syntax tree
+/* 说明C-语言编写的程序由一组声名序列组成。
+使用递归向下分析方法直接调用declaration_list()函数，并返回树节点
  */
 TreeNode * parse(void)
 { TreeNode * t;

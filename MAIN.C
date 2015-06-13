@@ -35,7 +35,8 @@ int lineno = 0;
 FILE * source;
 FILE * listing;
 FILE * code;
-
+FILE * fp;
+  
 /* allocate and set tracing flags */
 int EchoSource = TRUE;
 int TraceScan = TRUE;
@@ -47,17 +48,21 @@ int Error = FALSE;
 
 main( int argc, char * argv[] )
 { TreeNode * syntaxTree;
-  char pgm[120]; /* source code file name */
-  printf("please input file name：");
+  char pgm[120]; 
+  printf("请输入文件名：\n");
   scanf("%s",&pgm);
   if (strchr (pgm, '.') == NULL)
      strcat(pgm,".c");
   source = fopen(pgm,"r");
+  fp = fopen("parse.txt", "w");
   if (source==NULL)
   { fprintf(stderr,"File %s not found\n",pgm);
     exit(1);
   }
-  listing = stdout; /* send listing to screen */
+  if(fp ==NULL){
+  	printf("打开文件parse.txt失败\n");
+  } 
+  listing = fp; 
   fprintf(listing,"\nC- COMPILATION: %s\n",pgm);
 #if NO_PARSE
   while (getToken()!=ENDFILE);
@@ -94,5 +99,8 @@ main( int argc, char * argv[] )
 #endif
 #endif
   fclose(source);
+  fclose(fp);
+  printf("结果已保存到parse.txt\n");
+  system("pause");
   return 0;
 }

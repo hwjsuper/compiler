@@ -1,10 +1,3 @@
-/****************************************************/
-/* File: scan.c                                     */
-/* The scanner implementation for the C- compiler */
-/* Compiler Construction: Principles and Practice   */
-/* Kenneth C. Louden                                */
-/****************************************************/
-
 #include "globals.h"
 #include "util.h"
 #include "scan.h"
